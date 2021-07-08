@@ -28,7 +28,7 @@
 			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" href="#" role="button">Agregar
+					<a class="btn btn-outline-dark" th:href="@{/cursos/nuevo}" role="button">Agregar
 						Curso</a>
 				</div>
 			</div>
@@ -84,8 +84,8 @@
 						</thead>
 						<tbody>
 							<tr th:each="cl:${curso}">
-								<th scope="row" th:text="${cl.id}"></th>
-								<td th:text="${cl.nombre}"></td>
+								<th scope="row" th:text="${cl?.id}"></th>
+								<td th:text="${cl?.nombre}"></td>
 							</tr>
 						</tbody>
 					</table>

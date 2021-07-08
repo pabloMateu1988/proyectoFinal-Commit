@@ -13,6 +13,11 @@ public class MainController {
 		return "index";
 	}
 	
+	@GetMapping("/administrador")
+	public String irAdministrador() {
+		return "administrador";
+	}
+	
 	@GetMapping("/agregarAlumno")
 	public String addAlumno() {
 		return "agregarAlumno";

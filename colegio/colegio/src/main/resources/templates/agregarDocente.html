@@ -1,60 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="ISO-8859-1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<title>Administrador</title>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<title>Administrador</title>
 </head>
 <body>
 	<div class="container align-center">
 		<div class="card">
-			<div class="card-header text-center"> <h1>Guardar Docente</h1></div>
+			<div class="card-header text-center">
+				<h1>Guardar Docente</h1>
+			</div>
 			<div class="card-body">
-				<form th:action="@{/agregarDocente}" th:object="${docente}" method="post" class="row g-3">
+				<form th:action="@{/agregarDocente}" th:object="${docente}"
+					method="post" class="row g-3">
 					<div class="col-md-4">
-						<label for="inputNombre" class="form-label">Apellido y Nombre</label>
-						<input type="text" th:field="*{nombre}" class="form-control" id="inputNombre">
+						<label for="inputNombre" class="form-label">Apellido y
+							Nombre</label> <input type="text" th:field="*{nombre}"
+							class="form-control" id="inputNombre">
 					</div>
 					<div class="col-md-4">
-						<label for="inputDNI" class="form-label">DNI</label>
-						<input type="text" th:field="*{dni}" class="form-control" id="inputDNI">
+						<label for="inputDNI" class="form-label">DNI</label> <input
+							type="text" th:field="*{dni}" class="form-control" id="inputDNI">
 					</div>
 					<div class="col-4">
-						<label for="inputFechaNacimiento" class="form-label">Fecha De Nacimiento</label>
-						<input type="text" th:field="*{fechaDeNacimiento}" class="form-control" id="inputFechaNacimiento" placeholder="dd/MM/aaaa">
+						<label for="inputFechaNacimiento" class="form-label">Fecha
+							De Nacimiento</label> <input type="text" th:field="*{fechaDeNacimiento}"
+							class="form-control" id="inputFechaNacimiento"
+							placeholder="dd/MM/aaaa">
 					</div>
-					<div class="col-3">
-						<label for="inputDomicilio" class="form-label">Domicilio</label>
-						<input type="text" th:field="*{domicilio}" class="form-control" id="inputDomicilio" placeholder="44 E/ 10 Y 11">
+					<div class="col-4">
+						<label for="inputDomicilio" class="form-label">Domicilio</label> <input
+							type="text" th:field="*{domicilio}" class="form-control"
+							id="inputDomicilio" placeholder="44 E/ 10 Y 11">
 					</div>
 					<div class="col-md-4">
-						<label for="inputTelefono" class="form-label">Telefono</label>
-						<input type="text" th:field="*{telefono}" class="form-control" id="inputTelefono">
+						<label for="inputTelefono" class="form-label">Telefono</label> <input
+							type="text" th:field="*{telefono}" class="form-control"
+							id="inputTelefono">
 					</div>
-					<div class="col-md-2">
-						<label for="inputEmail" class="form-label">Email</label>
-						<input type="email" th:field="*{email}" class="form-control" id="inputEmail">
+					<div class="col-md-4">
+						<label for="inputEmail" class="form-label">Email</label> <input
+							type="email" th:field="*{email}" class="form-control"
+							id="inputEmail">
 					</div>
 					<div class="col-md-4">
 						<label for="inputLegajo" class="form-label">Nro de Legajo</label>
-						<input type="text" th:field="*{legajo}" class="form-control" id="inputLegajo">
+						<input type="text" th:field="*{legajo}" class="form-control"
+							id="inputLegajo">
 					</div>
 					<div class="col-md-4">
-						<label for="inputCurso" class="form-label">Curso</label>
-						<select th:field="*{curso_id}" class="form-select" aria-label="Default select example">
+						<label for="inputCurso" class="form-label">Curso</label> <select
+							 class="form-select"
+							aria-label="Default select example">
 							<option value="">Seleccione el curso</option>
-							<option th:each="cl:${curso}" th:value="${cl.id}" th:text="${cl.nombre}" ></option>
+							<option></option>
 						</select>
 					</div>
-					<div class="card-footer">
 						<button type="submit" class="btn btn-outline-success">Guardar</button>
-					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<footer th:replace="/plantilla/template :: footer" ></footer>
+	<div class="container col-4">
+		<div class="row gx-5">
+			<div class="col">
+				<h3 class="text-center" th:text="${titulo}"></h3>
+				<div class="p-3 border bg-light text-center">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Docente</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="d:${docente}">
+								<th scope="row" th:text="${d.id}"></th>
+								<td th:text="${d.nombre}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="/plantilla/template :: footer"></footer>
 </body>
 
 </html>

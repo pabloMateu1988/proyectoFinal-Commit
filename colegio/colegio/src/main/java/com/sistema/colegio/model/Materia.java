@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,11 +24,12 @@ public class Materia implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	@OneToMany
-	private List<Alumno> alumnos = new ArrayList<Alumno>();
-	@OneToOne
-	private Docente docente;
+	
 	@OneToMany
 	private List<Curso> cursos = new ArrayList<Curso>();
+	@OneToMany
+	private List<Alumno> alumnos = new ArrayList<Alumno>();
+	@OneToMany
+	private List<Docente> docentes = new ArrayList<Docente>();
 
 }

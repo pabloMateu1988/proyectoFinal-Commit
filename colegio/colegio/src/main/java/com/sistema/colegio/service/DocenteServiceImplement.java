@@ -20,7 +20,7 @@ public class DocenteServiceImplement implements DocenteService {
 
 	@Override
 	public void guardar(Docente docente) {
-		this.docenteRepository.save(docente);
+		docenteRepository.saveAndFlush(docente);
 	}
 
 	@Override

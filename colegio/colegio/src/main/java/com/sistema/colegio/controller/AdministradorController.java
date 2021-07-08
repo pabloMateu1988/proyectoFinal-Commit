@@ -16,7 +16,7 @@ import com.sistema.colegio.service.CursoService;
 import com.sistema.colegio.service.DocenteService;
 @Controller
 @RequestMapping
-public class AgregarDocenteController {
+public class AdministradorController {
 	
 	@Autowired
 	private CursoService cursoService;
@@ -27,7 +27,7 @@ public class AgregarDocenteController {
 		List<Curso> listadoCursos = cursoService.listarCursos();
 		
 		Docente d = new Docente();
-		model.addAttribute("titulo", "Nuevo Cliente");
+		model.addAttribute("titulo", "Nuevo Docente");
 		model.addAttribute("docente", d);
 		model.addAttribute("curso", listadoCursos);
 		
@@ -35,11 +35,11 @@ public class AgregarDocenteController {
 		
 		
 	}
-	@PostMapping("/agregarDocente")
+	@PostMapping("/save")
 	public String guardar(@ModelAttribute Docente docente) {
 		docenteService.guardar(docente);
 		System.out.println("Cliente guardado con exito");
-		return "agregarDocente";
+		return "redirect:/agregarDocente";
 	}
 
 }
