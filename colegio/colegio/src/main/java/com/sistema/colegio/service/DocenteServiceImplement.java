@@ -14,7 +14,7 @@ public class DocenteServiceImplement implements DocenteService {
 	private DocenteRepository docenteRepository;
 	
 	@Override
-	public List<Docente> listarTodos() {
+	public List<Docente> listarDocentes() {
 		return docenteRepository.findAll();
 	}
 
@@ -24,7 +24,7 @@ public class DocenteServiceImplement implements DocenteService {
 	}
 
 	@Override
-	public Docente buscar(Long id) {
+	public Docente buscarPorId(Long id) {
 		return docenteRepository.findById(id).orElse(null);
 		
 	}

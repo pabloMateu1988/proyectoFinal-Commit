@@ -10,20 +10,22 @@
 <title>Administrador</title>
 </head>
 <body>
+	<header th:replace="/plantilla/templateAdmin :: header"></header>
 	<div class="container align-center">
 		<div class="card">
 			<div class="card-header text-center">
-				<h1>Guardar Curso</h1>
+				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/cursos/crear}" th:object="${curso}"
+				<form th:action="@{/cursos/guardar}" th:object="${curso}"
 					method="post" class="row g-3">
-					<div class="col-md-4">
-						<label for="inputNombre" class="form-label">Curso</label>
-							<input type="text" th:field="*{nombre}"
-							class="form-control" id="nombre" name="nombre" placeholder="Ingresar curso..">
+					<div class="col">
+						<input type="hidden" th:field="*{id}"> <input type="text"
+							th:field="*{nombre}" class="form-control" id="nombre"
+							name="nombre" placeholder="Ingresar curso..">
 					</div>
-						<button type="submit" class="btn btn-outline-success">Guardar</button>
+					<button type="submit" th:href="@{/cursos/crear}"
+						class="btn btn-outline-success">Crear Curso</button>
 				</form>
 			</div>
 		</div>
@@ -45,9 +47,10 @@
 							<tr th:each="c:${cursos}">
 								<th scope="row" th:text="${c.id}"></th>
 								<td th:text="${c.nombre}"></td>
-								<td><a class="btn btn-outline-warning" th:href="@{/cursos/editar/}+${c.id}" role="button">Editar</a>
-								<a class="btn btn-outline-danger" th:href="@{/cursos/eliminar/}+${c.id}" role="button">Eliminar</a></td>
-								
+								<td><a class="btn btn-outline-warning"
+									th:href="@{/cursos/editar/}+${c.id}" role="button">Editar</a> <a
+									class="btn btn-outline-danger"
+									th:href="@{/cursos/eliminar/}+${c.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -55,5 +58,6 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="/plantilla/template :: footer"></footer>
 </body>
 </html>

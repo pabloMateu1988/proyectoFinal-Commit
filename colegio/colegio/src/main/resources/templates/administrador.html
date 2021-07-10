@@ -16,79 +16,26 @@
 		<div class="row gx-5">
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" th:href="@{/agregarDocente}"
+					<a class="btn btn-outline-dark" th:href="@{/docentes/crear}"
 						role="button">Agregar Docente</a>
 				</div>
 			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" th:href="@{/agregarAlumno}"
+					<a class="btn btn-outline-dark" th:href="@{/alumnos/crear}"
 						role="button">Agregar Alumno</a>
 				</div>
 			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" th:href="@{/cursos/nuevo}" role="button">Agregar
+					<a class="btn btn-outline-dark" th:href="@{/cursos/crear}" role="button">Agregar
 						Curso</a>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="container pb-5">
-		<div class="row gx-5">
-			<div class="col">
-				<h3 class="text-center" th:text="${titulo}"></h3>
-				<div class="p-3 border bg-light text-center">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Curso</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cl:${curso}">
-								<th scope="row" th:text="${cl.id}"></th>
-								<td th:text="${cl.nombre}"></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Curso</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cl:${curso}">
-								<th scope="row" th:text="${cl.id}"></th>
-								<td th:text="${cl.nombre}"></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="col">
-				<div class="p-3 border bg-light text-center">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Curso</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cl:${curso}">
-								<th scope="row" th:text="${cl?.id}"></th>
-								<td th:text="${cl?.nombre}"></td>
-							</tr>
-						</tbody>
-					</table>
+					<a class="btn btn-outline-dark" th:href="@{/materias/crear}" role="button">Agregar
+						Materia</a>
 				</div>
 			</div>
 		</div>

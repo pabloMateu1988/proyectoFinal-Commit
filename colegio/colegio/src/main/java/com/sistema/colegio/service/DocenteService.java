@@ -9,9 +9,9 @@ import com.sistema.colegio.model.Docente;
 public interface DocenteService {
 	
 	
-	public List<Docente> listarTodos();
+	public List<Docente> listarDocentes();
 	public void guardar(Docente docente);
-	public Docente buscar(Long id);
+	public Docente buscarPorId(Long id);
 	public void eliminar(Long id);
 		
 

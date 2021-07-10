@@ -2,9 +2,7 @@ package com.sistema.colegio.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -23,10 +21,11 @@ public class Docente extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToMany
-	private Set<Materia> materias = new HashSet<Materia>();
-	
-	@ManyToMany
+	private List<Materia> materias = new ArrayList<Materia>();
+	@ManyToMany 
 	private List<Curso> cursos = new ArrayList<Curso>();
+
+	
 	
 
 

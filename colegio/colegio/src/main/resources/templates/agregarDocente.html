@@ -10,58 +10,69 @@
 <title>Administrador</title>
 </head>
 <body>
+	<header th:replace="/plantilla/templateAdmin :: header"></header>
 	<div class="container align-center">
 		<div class="card">
 			<div class="card-header text-center">
-				<h1>Guardar Docente</h1>
+				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/agregarDocente}" th:object="${docente}"
+				<form th:action="@{/docentes/guardar}" th:object="${docente}"
 					method="post" class="row g-3">
+					<input type="hidden" th:field="*{id}" id="nombre">
 					<div class="col-md-4">
-						<label for="inputNombre" class="form-label">Apellido y
-							Nombre</label> <input type="text" th:field="*{nombre}"
-							class="form-control" id="inputNombre">
+						<label for="nombre" class="form-label">Apellido y Nombre</label> <input
+							type="text" th:field="*{nombre}" class="form-control" id="nombre"
+							name="nombre">
 					</div>
 					<div class="col-md-4">
-						<label for="inputDNI" class="form-label">DNI</label> <input
-							type="text" th:field="*{dni}" class="form-control" id="inputDNI">
+						<label for="dni" class="form-label">DNI</label> <input type="text"
+							th:field="*{dni}" class="form-control" id="dni" name="dni">
 					</div>
 					<div class="col-4">
-						<label for="inputFechaNacimiento" class="form-label">Fecha
-							De Nacimiento</label> <input type="text" th:field="*{fechaDeNacimiento}"
-							class="form-control" id="inputFechaNacimiento"
-							placeholder="dd/MM/aaaa">
+						<label for="fechaDeNacimiento" class="form-label">Fecha De
+							Nacimiento</label> <input type="text" th:field="*{fechaDeNacimiento}"
+							class="form-control" id="fecha_de_Nacimiento"
+							name="fecha_de_nacimiento" placeholder="dd/MM/aaaa">
 					</div>
 					<div class="col-4">
-						<label for="inputDomicilio" class="form-label">Domicilio</label> <input
+						<label for="domicilio" class="form-label">Domicilio</label> <input
 							type="text" th:field="*{domicilio}" class="form-control"
-							id="inputDomicilio" placeholder="44 E/ 10 Y 11">
+							id="domicilio" name="domicilio" placeholder="44 E/ 10 Y 11">
 					</div>
 					<div class="col-md-4">
-						<label for="inputTelefono" class="form-label">Telefono</label> <input
+						<label for="telefono" class="form-label">Telefono</label> <input
 							type="text" th:field="*{telefono}" class="form-control"
-							id="inputTelefono">
+							id="telefono" name="telefono">
 					</div>
 					<div class="col-md-4">
-						<label for="inputEmail" class="form-label">Email</label> <input
-							type="email" th:field="*{email}" class="form-control"
-							id="inputEmail">
+						<label for="email" class="form-label">Email</label> <input
+							type="email" th:field="*{email}" class="form-control" id="email"
+							name="email">
 					</div>
 					<div class="col-md-4">
-						<label for="inputLegajo" class="form-label">Nro de Legajo</label>
-						<input type="text" th:field="*{legajo}" class="form-control"
-							id="inputLegajo">
+						<label for="legajo" class="form-label">Nro de Legajo</label> <input
+							type="text" th:field="*{legajo}" class="form-control" id="legajo"
+							name="legajo">
 					</div>
 					<div class="col-md-4">
-						<label for="inputCurso" class="form-label">Curso</label> <select
-							 class="form-select"
-							aria-label="Default select example">
-							<option value="">Seleccione el curso</option>
-							<option></option>
+						<label for="cursos" class="form-check-label">Cursos a
+							cargo</label> <select th:field="*{cursos}" class="form-select" multiple
+							aria-label="multiple select example">
+							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
+								th:value="${c.id}">Seleccione el/los cursos</option>
 						</select>
 					</div>
-						<button type="submit" class="btn btn-outline-success">Guardar</button>
+					<div class="col-md-4">
+						<label for="cursos" class="form-check-label">Materias a
+							cargo</label> <select th:field="*{materias}" class="form-select" multiple
+							aria-label="multiple select example">
+							<option th:each="m : ${materias}" selected th:text="${m.nombre}"
+								th:value="${m.id}">Seleccione la/las materias</option>
+						</select>
+					</div>
+					<button type="submit" th:href="@{/docentes/crear}"
+						class="btn btn-outline-success">Guardar</button>
 				</form>
 			</div>
 		</div>
@@ -69,9 +80,10 @@
 	<div class="container col-4">
 		<div class="row gx-5">
 			<div class="col">
-				<h3 class="text-center" th:text="${titulo}"></h3>
-				<div class="p-3 border bg-light text-center">
-					<table class="table">
+				<h3 class="text-center" th:text="${tituloLista}"></h3>
+				<div
+					class="p-3 border bg-light text-center ">
+					<table class="table table-bordered table-striped mb-0">
 						<thead>
 							<tr>
 								<th scope="col">Id</th>
@@ -79,9 +91,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="d:${docente}">
+							<tr th:each="d:${docentes}">
 								<th scope="row" th:text="${d.id}"></th>
 								<td th:text="${d.nombre}"></td>
+								<td><a class="btn btn-outline-warning"
+									th:href="@{/docentes/editar/}+${d.id}" role="button">Editar</a>
+									<a class="btn btn-outline-danger"
+									th:href="@{/docentes/eliminar/}+${d.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>

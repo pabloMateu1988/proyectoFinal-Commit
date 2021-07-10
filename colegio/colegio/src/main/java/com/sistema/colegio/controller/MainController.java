@@ -17,11 +17,7 @@ public class MainController {
 	public String irAdministrador() {
 		return "administrador";
 	}
-	
-	@GetMapping("/agregarAlumno")
-	public String addAlumno() {
-		return "agregarAlumno";
-	}
+
 	
 	
 	
