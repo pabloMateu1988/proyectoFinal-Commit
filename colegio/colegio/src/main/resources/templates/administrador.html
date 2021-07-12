@@ -28,18 +28,32 @@
 			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" th:href="@{/cursos/crear}" role="button">Agregar
-						Curso</a>
+					<a class="btn btn-outline-dark" th:href="@{/cursos/crear}"
+						role="button">Agregar Curso</a>
 				</div>
 			</div>
 			<div class="col">
 				<div class="p-3 border bg-light text-center">
-					<a class="btn btn-outline-dark" th:href="@{/materias/crear}" role="button">Agregar
-						Materia</a>
+					<a class="btn btn-outline-dark" th:href="@{/materias/crear}"
+						role="button">Agregar Materia</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<footer th:replace="/plantilla/template :: footer"></footer>
+	<div class="container" th:each="c:${cursos}">
+		<div  class="card border-success mb-3" style="max-width: 18rem;">
+			<div class="card-header bg-transparent border-success"th:text="*{c.nombre}"></div>
+			<div class="card-body text-success">
+				<h5 class="card-title">Success card title</h5>
+				<p class="card-text">Some quick example text to build on the
+					card title and make up the bulk of the card's content.</p>
+			</div>
+			<div class="card-footer bg-transparent border-success">Footer</div>
+		</div>
+	</div>
+
+	<div class="p-5">
+		<footer th:replace="/plantilla/template :: footer"></footer>
+	</div>
 </body>
 </html>

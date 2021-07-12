@@ -10,6 +10,7 @@
 <title>Cursos</title>
 </head>
 <body>
+	<header th:replace="/plantilla/templateAdmin :: header"></header>
 	<div class="container align-center">
 		<div class="card">
 			<div class="card-header text-center">
@@ -19,12 +20,21 @@
 				<form th:action="@{/materias/guardar}" th:object="${materia}"
 					method="post" class="row g-3">
 					<div class="col">
-					<input type="hidden" th:field="*{id}">
-						<input type="text" th:field="*{nombre}" class="form-control"
-							id="nombre" name="nombre" placeholder="Ingresar materia..">
+						<label for="materia" class="form-check-label">Materia</label> <input
+							type="hidden" th:field="*{id}"> <input type="text"
+							th:field="*{nombre}" class="form-control" id="nombre"
+							name="nombre" placeholder="Ingresar materia..">
+					</div>
+					<div class="col-md-4">
+						<label for="cursos" class="form-check-label">Curso al que
+							pertence</label> <select th:field="*{cursos}" class="form-select"
+							multiple aria-label="multiple select example">
+							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
+								th:value="${c.id}">Seleccione el curso</option>
+						</select>
 					</div>
 					<button type="submit" th:href="@{/materias/crear}"
-						class="btn btn-outline-success" >Crear Materia</button>
+						class="btn btn-outline-success">Crear Materia</button>
 				</form>
 			</div>
 		</div>
@@ -33,18 +43,25 @@
 		<div class="row gx-5">
 			<div class="col">
 				<h3 class="text-center" th:text="${tituloLista}"></h3>
-				<div class="p-3 border bg-light text-center table-wrapper-scroll-y my-custom-scrollbar">
+				<div
+					class="p-3 border bg-light text-center table-wrapper-scroll-y my-custom-scrollbar">
 					<table class="table table-bordered table-striped mb-0">
 						<thead>
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Materia</th>
+								<th scope="col">Cursos donde se dicta</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="m:${materias}">
 								<th scope="row" th:text="${m.id}"></th>
 								<td th:text="${m.nombre}"></td>
+								<td th:each= "c:${cursos}" th:text="${c.nombre}"></td>
+								<td><a class="btn btn-outline-warning"
+									th:href="@{/materias/editar/}+${m.id}" role="button">Editar</a>
+									<a class="btn btn-outline-danger"
+									th:href="@{/materias/eliminar/}+${m.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -52,6 +69,8 @@
 			</div>
 		</div>
 	</div>
-	<footer th:replace="/plantilla/template :: footer"></footer>
+	<div class="p-5">
+		<footer th:replace="/plantilla/template :: footer"></footer>
+	</div>
 </body>
 </html>

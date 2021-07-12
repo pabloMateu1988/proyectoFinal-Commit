@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<form th:action="@{/docentes/guardar}" th:object="${docente}"
 					method="post" class="row g-3">
-					<input type="hidden" th:field="*{id}" id="nombre">
+					<input type="hidden" th:field="*{id}" id="id">
 					<div class="col-md-4">
 						<label for="nombre" class="form-label">Apellido y Nombre</label> <input
 							type="text" th:field="*{nombre}" class="form-control" id="nombre"
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-	<footer th:replace="/plantilla/template :: footer"></footer>
+	<div class="p-5"><footer th:replace="/plantilla/template :: footer"></footer></div>
 </body>
 
 </html>

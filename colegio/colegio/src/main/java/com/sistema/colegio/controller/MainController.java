@@ -13,10 +13,11 @@ public class MainController {
 		return "index";
 	}
 	
-	@GetMapping("/administrador")
-	public String irAdministrador() {
-		return "administrador";
+	@GetMapping("/docente")
+	public String docente() {
+		return "docente";
 	}
+
 
 	
 	
