@@ -19,7 +19,7 @@
 				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/alumnos/guardar}" th:object="${alumno}"
+				<form th:action="@{/administrador/guardar}" th:object="${alumno}"
 					method="post" class="row g-3">
 					<input type="hidden" th:field="*{id}" id="nombre">
 					<div class="col-md-4">
@@ -65,7 +65,7 @@
 								th:value="${c.id}">Seleccione el curso</option>
 						</select>
 					</div>
-					<button type="submit" th:href="@{/alumnos/crear}"
+					<button type="submit" th:href="@{/administrador/crear}"
 						class="btn btn-outline-success">Guardar</button>
 				</form>
 			</div>
@@ -74,7 +74,7 @@
 	<div class="container col-4">
 		<div class="row gx-5">
 			<div class="col">
-				<h3 class="text-center" th:text="${tituloLista}"></h3>
+				<h3 class="text-center" th:text="${tituloTabla}"></h3>
 				<div
 					class="p-3 border bg-light text-center table-wrapper-scroll-y my-custom-scrollbar">
 					<table class="table table-bordered table-striped mb-0">
@@ -89,9 +89,9 @@
 								<th scope="row" th:text="${a.id}"></th>
 								<td th:text="${a.nombre}"></td>
 								<td><a class="btn btn-outline-warning"
-									th:href="@{/alumnos/editar/}+${a.id}" role="button">Editar</a>
+									th:href="@{/administrador/editar/}+${a.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"
-									th:href="@{/alumnos/eliminar/}+${a.id}" role="button">Eliminar</a></td>
+									th:href="@{/administrador/eliminar/}+${a.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import lombok.Getter;
@@ -22,7 +24,7 @@ public class Docente extends Persona implements Serializable{
 	
 	@ManyToMany
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany 
+	@ManyToMany
 	private List<Curso> cursos = new ArrayList<Curso>();
 
 	

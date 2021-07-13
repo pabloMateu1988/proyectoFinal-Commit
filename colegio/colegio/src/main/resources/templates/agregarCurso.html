@@ -17,14 +17,23 @@
 				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/cursos/guardar}" th:object="${curso}"
+				<form th:action="@{/administrador/cursos/guardar}" th:object="${curso}"
 					method="post" class="row g-3">
 					<div class="col">
+					<label for="cursos" class="form-check-label">Cursos</label>
 						<input type="hidden" th:field="*{id}"> <input type="text"
 							th:field="*{nombre}" class="form-control" id="nombre"
 							name="nombre" placeholder="Ingresar curso..">
 					</div>
-					<button type="submit" th:href="@{/cursos/crear}"
+					<div class="col-md-4">
+						<label for="cursos" class="form-check-label">Materias que se dictan</label> 
+						<select th:field="*{materias}" class="form-select" multiple
+							aria-label="multiple select example">
+							<option th:each="m : ${materias}" selected th:text="${m.nombre}"
+								th:value="${m.id}">Seleccione la/las materias</option>
+						</select>
+					</div>
+					<button type="submit" th:href="@{/administrador/cursos/crear}"
 						class="btn btn-outline-success">Crear Curso</button>
 				</form>
 			</div>
@@ -48,9 +57,9 @@
 								<th scope="row" th:text="${c.id}"></th>
 								<td th:text="${c.nombre}"></td>
 								<td><a class="btn btn-outline-warning"
-									th:href="@{/cursos/editar/}+${c.id}" role="button">Editar</a> <a
+									th:href="@{/administrador//cursos/editar/}+${c.id}" role="button">Editar</a> <a
 									class="btn btn-outline-danger"
-									th:href="@{/cursos/eliminar/}+${c.id}" role="button">Eliminar</a></td>
+									th:href="@{/administrador//cursos/eliminar/}+${c.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -17,7 +17,7 @@
 				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/docentes/guardar}" th:object="${docente}"
+				<form th:action="@{/administrador/docentes/guardar}" th:object="${docente}"
 					method="post" class="row g-3">
 					<input type="hidden" th:field="*{id}" id="id">
 					<div class="col-md-4">
@@ -71,7 +71,7 @@
 								th:value="${m.id}">Seleccione la/las materias</option>
 						</select>
 					</div>
-					<button type="submit" th:href="@{/docentes/crear}"
+					<button type="submit" th:href="@{/administrador/docentes/crear}"
 						class="btn btn-outline-success">Guardar</button>
 				</form>
 			</div>
@@ -95,9 +95,9 @@
 								<th scope="row" th:text="${d.id}"></th>
 								<td th:text="${d.nombre}"></td>
 								<td><a class="btn btn-outline-warning"
-									th:href="@{/docentes/editar/}+${d.id}" role="button">Editar</a>
+									th:href="@{/administrador/docentes/editar/}+${d.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"
-									th:href="@{/docentes/eliminar/}+${d.id}" role="button">Eliminar</a></td>
+									th:href="@{/administrador/docentes/eliminar/}+${d.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>

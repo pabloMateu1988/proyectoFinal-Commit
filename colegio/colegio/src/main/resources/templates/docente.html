@@ -11,7 +11,19 @@
 </head>
 <body>
 	<header th:replace="/plantilla/template :: header"></header>
-	
+	<div class="container align-center">
+		<div class="card">
+			<div class="card-header text-center">
+				<h1 th:text="*{titulo}"></h1>
+				<h2 th:text="*{docente.nombre}"></h2>
+			</div>
+		</div>
+		<div>
+		<p th:text="*{cursosQueDicta.cursos_id}"></p>
+		</div>
+	</div>
+
+
 	<div class="p-5">
 		<footer th:replace="/plantilla/template :: footer"></footer>
 	</div>
