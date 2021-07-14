@@ -32,8 +32,7 @@ public class Materia implements Serializable {
 	private Long id;
 	private String nombre;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "materia_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+	@ManyToMany
 	private List<Curso> cursos = new ArrayList<Curso>();
 	@ManyToMany
 	private List<Alumno> alumnos = new ArrayList<Alumno>();

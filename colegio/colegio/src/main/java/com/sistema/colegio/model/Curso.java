@@ -34,10 +34,9 @@ public class Curso implements Serializable {
 	private Long id;
 	private String nombre;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "curso_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+	@ManyToMany
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany
 	private List<Docente> docentes = new ArrayList<Docente>();
 	@ManyToMany
 	private List<Alumno> alumnos = new ArrayList<>();

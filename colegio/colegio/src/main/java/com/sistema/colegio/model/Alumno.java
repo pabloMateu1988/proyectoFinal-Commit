@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Alumno extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinColumn(name = "alumno_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
 	private List<Curso> cursos = new ArrayList<Curso>();
 	

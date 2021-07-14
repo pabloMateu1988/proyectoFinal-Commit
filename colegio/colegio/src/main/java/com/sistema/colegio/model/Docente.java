@@ -25,10 +25,9 @@ public class Docente extends Persona implements Serializable{
 	
 	@ManyToMany
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany
 	private List<Curso> cursos = new ArrayList<Curso>();
-	@ManyToOne
-	private Materia materia;
+
 	
 
 
