@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,18 @@ public class Docente extends Persona implements Serializable{
 	
 	@ManyToMany
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Curso> cursos = new ArrayList<Curso>();
+	@ManyToOne
+	private Materia materia;
+	
+
+
+
+	
+	
+	
+	
 
 	
 	

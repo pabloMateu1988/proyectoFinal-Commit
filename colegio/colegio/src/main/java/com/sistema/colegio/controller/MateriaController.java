@@ -18,6 +18,7 @@ import com.sistema.colegio.service.MateriaService;
 @Controller
 @RequestMapping("/materias")
 public class MateriaController {
+	
 	@Autowired
 	private MateriaService materiaService;
 	@Autowired

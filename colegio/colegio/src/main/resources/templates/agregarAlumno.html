@@ -19,7 +19,7 @@
 				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/administrador/guardar}" th:object="${alumno}"
+				<form th:action="@{/administrador/alumnos/guardar}" th:object="${alumno}"
 					method="post" class="row g-3">
 					<input type="hidden" th:field="*{id}" id="nombre">
 					<div class="col-md-4">
@@ -65,7 +65,7 @@
 								th:value="${c.id}">Seleccione el curso</option>
 						</select>
 					</div>
-					<button type="submit" th:href="@{/administrador/crear}"
+					<button type="submit" th:href="@{/administrador/alumnos/crear}"
 						class="btn btn-outline-success">Guardar</button>
 				</form>
 			</div>
@@ -89,9 +89,9 @@
 								<th scope="row" th:text="${a.id}"></th>
 								<td th:text="${a.nombre}"></td>
 								<td><a class="btn btn-outline-warning"
-									th:href="@{/administrador/editar/}+${a.id}" role="button">Editar</a>
+									th:href="@{/administrador/alumnos/editar/}+${a.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"
-									th:href="@{/administrador/eliminar/}+${a.id}" role="button">Eliminar</a></td>
+									th:href="@{/administrador/alumnos/eliminar/}+${a.id}" role="button">Eliminar</a></td>
 							</tr>
 						</tbody>
 					</table>

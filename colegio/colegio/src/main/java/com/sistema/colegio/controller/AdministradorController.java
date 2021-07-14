@@ -78,11 +78,10 @@ public class AdministradorController {
 	public String crearDocente(Model model) {
 		model.addAttribute("titulo", "Lista de Docentes");
 		model.addAttribute("docentes", docenteService.listarDocentes());
-		Docente d = new Docente();
 		model.addAttribute("tituloPrincipal", "Crear Docente");
 		model.addAttribute("cursos", cursoService.listarCursos());
 		model.addAttribute("materias", materiaService.listarMaterias());
-		model.addAttribute("docente", d);
+		model.addAttribute("docente", new Docente());
 		
 		return "agregarDocente";
 		

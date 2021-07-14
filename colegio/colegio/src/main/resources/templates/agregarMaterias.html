@@ -29,8 +29,8 @@
 						<label for="cursos" class="form-check-label">Curso al que
 							pertence</label> <select th:field="*{cursos}" class="form-select"
 							multiple aria-label="multiple select example">
-							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
-								th:value="${c.id}">Seleccione el curso</option>
+							<option th:each="cur : ${cursos}" selected th:text="${cur.nombre}"
+								th:value="${cur.id}">Seleccione el curso</option>
 						</select>
 					</div>
 					<button type="submit" th:href="@{/administrador/materias/crear}"
@@ -57,7 +57,7 @@
 							<tr th:each="m:${materias}">
 								<th scope="row" th:text="${m.id}"></th>
 								<td th:text="${m.nombre}"></td>
-								<td th:each= "c:${cursos}" th:text="${c.nombre}"></td>
+							    <td th:text="${m.cursos}"></td>
 								<td><a class="btn btn-outline-warning"
 									th:href="@{/administrador/materias/editar/}+${m.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"
