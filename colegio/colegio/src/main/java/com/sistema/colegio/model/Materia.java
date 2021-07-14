@@ -32,7 +32,7 @@ public class Materia implements Serializable {
 	private Long id;
 	private String nombre;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "materias")
 	private List<Curso> cursos = new ArrayList<Curso>();
 	@ManyToMany
 	private List<Alumno> alumnos = new ArrayList<Alumno>();
