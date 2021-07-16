@@ -39,12 +39,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="container col-4">
+	<div class="container col">
 		<div class="row gx-5">
 			<div class="col">
 				<h3 class="text-center" th:text="${tituloLista}"></h3>
 				<div
-					class="p-3 border bg-light text-center table-wrapper-scroll-y my-custom-scrollbar">
+					class="border bg-light">
 					<table class="table table-bordered table-striped mb-0">
 						<thead>
 							<tr>
@@ -54,10 +54,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="m:${materias}">
+							<tr th:each="m:${materias}" >
 								<th scope="row" th:text="${m.id}"></th>
 								<td th:text="${m.nombre}"></td>
-							    <td th:text="${m.cursos}"></td>
+							    <td th:each="c:${materia.cursos}" th:text="${c.id}"></td>
 								<td><a class="btn btn-outline-warning"
 									th:href="@{/administrador/materias/editar/}+${m.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"

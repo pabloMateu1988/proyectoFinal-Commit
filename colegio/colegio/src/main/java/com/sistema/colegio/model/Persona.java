@@ -27,4 +27,5 @@ public abstract class Persona implements Serializable {
 	private String legajo;
 	private Long telefono;
 	private String email;
+	private String password;
 }

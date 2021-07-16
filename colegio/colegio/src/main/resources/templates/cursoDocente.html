@@ -13,10 +13,47 @@
 	<header th:replace="/plantilla/template :: header"></header>
 	<div class="container align-center">
 		<div class="card">
-			<div class="card-header text-center" th:each="curso: ${curso.docentes}">
-				<h1 th:text="*{titulo}"></h1>
-				<h2 th:text="*{cursos.nombre}"></h2>
+			<div class="card-header text-center">
+				<h1 th:text="*{tituloPrincipal}"></h1>
+				<h3 th:text="*{curso.nombre}"></h3>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="container col-4">
+			<h3 th:text="*{tituloListaAlumnos}"></h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Apellido y Nombre</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="alumno:${curso.alumnos}">
+						<th scope="row" th:text="${alumno.id}"></th>
+						<td th:text=${alumno.nombre}></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="container col-4">
+			<h3 th:text="*{tituloListaMaterias}"></h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Materia</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="docMateria:${docente.materias}">
+						<th scope="row" th:text="${docMateria.id}"></th>
+						<td th:text=${docMateria.nombre}></td>
+						<td><a class="btn btn-outline-dark" href="@{/materia/{idCurso}/{idDocente}(idCurso = ${curso.id}, idDocente = ${docente.id})}" role="button">Ir</a></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 

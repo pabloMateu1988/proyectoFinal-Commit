@@ -76,7 +76,7 @@ public class AdministradorController {
 	
 	@GetMapping("/docentes/crear")
 	public String crearDocente(Model model) {
-		model.addAttribute("titulo", "Lista de Docentes");
+		model.addAttribute("tituloLista", "Lista de Docentes");
 		model.addAttribute("docentes", docenteService.listarDocentes());
 		model.addAttribute("tituloPrincipal", "Crear Docente");
 		model.addAttribute("cursos", cursoService.listarCursos());

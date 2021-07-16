@@ -4,17 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ConstraintMode;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import lombok.Getter;
@@ -35,12 +31,11 @@ public class Curso implements Serializable {
 	private Long id;
 	private String nombre;
 	
-	@ManyToMany
-	@JoinTable( name = "curso_y_materias", joinColumns = @JoinColumn(name ="curso_id"), inverseJoinColumns = @JoinColumn(name = "materia_id"))
+	@ManyToMany(mappedBy = "cursos")
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany
+	@ManyToMany(mappedBy = "cursos")
 	private List<Docente> docentes = new ArrayList<Docente>();
-	@ManyToMany
+	@ManyToMany(mappedBy = "cursos")
 	private List<Alumno> alumnos = new ArrayList<>();
 
 

@@ -29,19 +29,7 @@ public class DocenteController {
 		model.addAttribute("docente", docenteService.buscarPorId(id));
 		return "docente";
 	}
-	@GetMapping("/curso/{id}")
-	public String verCurso(Model model, @PathVariable("id") Long id) {
-		model.addAttribute("titulo", "Bienvenido a");
-		model.addAttribute("docente", docenteService.buscarPorId(id));
-		return "docente";
-	}
 	
-	@GetMapping("/verCursos")
-	public String curso(Model model) {
-		model.addAttribute("titulo", "Bienvenido al Curso");
-		model.addAttribute("docente", docenteService.listarDocentes());
-		return "cursoDocente";
-	}
 	
 	
 
