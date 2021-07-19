@@ -32,8 +32,7 @@ public class Materia implements Serializable {
 	private String nombre;
 	
 	@ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+			CascadeType.ALL
     })
     @JoinTable(
             name = "materia_curso",
@@ -41,9 +40,7 @@ public class Materia implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "curso_id")}
     )
 	private List<Curso> cursos = new ArrayList<Curso>();
-	@ManyToMany
-	private List<Alumno> alumnos = new ArrayList<Alumno>();
-	@ManyToMany(mappedBy = "materias")
+	@ManyToMany(cascade = CascadeType.ALL,mappedBy = "materias")
 	private List<Docente> docentes = new ArrayList<Docente>();
 
 }

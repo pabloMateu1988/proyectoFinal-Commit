@@ -25,14 +25,6 @@
 							th:field="*{nombre}" class="form-control" id="nombre"
 							name="nombre" placeholder="Ingresar materia..">
 					</div>
-					<div class="col-md-4">
-						<label for="cursos" class="form-check-label">Curso al que
-							pertence</label> <select th:field="*{cursos}" class="form-select"
-							multiple aria-label="multiple select example">
-							<option th:each="cur : ${cursos}" selected th:text="${cur.nombre}"
-								th:value="${cur.id}">Seleccione el curso</option>
-						</select>
-					</div>
 					<button type="submit" th:href="@{/administrador/materias/crear}"
 						class="btn btn-outline-success">Crear Materia</button>
 				</form>
@@ -50,14 +42,13 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Materia</th>
-								<th scope="col">Cursos donde se dicta</th>
+								<th scope="col">Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="m:${materias}" >
 								<th scope="row" th:text="${m.id}"></th>
 								<td th:text="${m.nombre}"></td>
-							    <td th:each="c:${materia.cursos}" th:text="${c.id}"></td>
 								<td><a class="btn btn-outline-warning"
 									th:href="@{/administrador/materias/editar/}+${m.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"

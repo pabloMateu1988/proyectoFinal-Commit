@@ -7,8 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import lombok.Getter;
@@ -23,25 +21,9 @@ import lombok.Setter;
 public class Docente extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name = "docente_materia",
-            joinColumns = {@JoinColumn(name = "docente_id")},
-            inverseJoinColumns = {@JoinColumn(name = "materia_id")}
-    )
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Materia> materias = new ArrayList<Materia>();
-	@ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name = "docente_curso",
-            joinColumns = {@JoinColumn(name = "docente_id")},
-            inverseJoinColumns = {@JoinColumn(name = "curso_id")}
-    )
+	@ManyToMany(cascade = CascadeType.ALL,  mappedBy = "docentes")
 	private List<Curso> cursos = new ArrayList<Curso>();
 
 	

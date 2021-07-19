@@ -56,16 +56,8 @@
 							name="legajo">
 					</div>
 					<div class="col-md-4">
-						<label for="cursos" class="form-check-label">Cursos a
-							cargo</label> <select th:field="*{cursos}" class="form-select" multiple
-							aria-label="multiple select example">
-							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
-								th:value="${c.id}">Seleccione el/los cursos</option>
-						</select>
-					</div>
-					<div class="col-md-4">
-						<label for="cursos" class="form-check-label">Materias a
-							cargo</label> <select th:field="*{materias}" class="form-select" multiple
+						<label for="cursos" class="form-check-label">Materias a cargo</label> 
+						<select th:field="*{materias}" class="form-select" multiple
 							aria-label="multiple select example">
 							<option th:each="m : ${materias}" selected th:text="${m.nombre}"
 								th:value="${m.id}">Seleccione la/las materias</option>
@@ -88,8 +80,6 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Docente</th>
-								<th scope="col">Materias</th>
-								<th scope="col">Cursos</th>
 								<th scope="col">Acciones</th>
 								
 							</tr>
@@ -98,8 +88,6 @@
 							<tr th:each="d:${docentes}">
 								<th scope="row" th:text="${d.id}"></th>
 								<td th:text="${d.nombre}"></td>
-								<td th:text="${d.materias}"></td>
-								<td th:text="${d.cursos}"></td>
 								<td><a class="btn btn-outline-warning"
 									th:href="@{/administrador/docentes/editar/}+${d.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"

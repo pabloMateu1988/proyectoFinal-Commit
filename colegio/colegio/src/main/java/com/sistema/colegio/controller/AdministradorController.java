@@ -156,6 +156,7 @@ public class AdministradorController {
 		model.addAttribute("titulo", "Lista de Cursos");
 		model.addAttribute("cursos", cursoService.listarCursos());
 		model.addAttribute("materias", materiaService.listarMaterias());
+		model.addAttribute("docentes", docenteService.listarDocentes());
 		model.addAttribute("tituloPrincipal", "Crear Curso");
 		model.addAttribute("curso", new Curso());
 		return "agregarCurso";
@@ -180,6 +181,7 @@ public class AdministradorController {
 		model.addAttribute("curso", curso);
 		model.addAttribute("cursos", cursoService.listarCursos());
 		model.addAttribute("materias", materiaService.listarMaterias());
+		model.addAttribute("docentes", docenteService.listarDocentes());
 		System.out.println("Editado con exito");
 		return "agregarCurso";
 	}

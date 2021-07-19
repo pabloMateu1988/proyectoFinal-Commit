@@ -82,12 +82,14 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Alumno</th>
+								<th scope="col">Curso</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="a:${alumnos}">
 								<th scope="row" th:text="${a.id}"></th>
 								<td th:text="${a.nombre}"></td>
+								<td ></td>
 								<td><a class="btn btn-outline-warning"
 									th:href="@{/administrador/alumnos/editar/}+${a.id}" role="button">Editar</a>
 									<a class="btn btn-outline-danger"
