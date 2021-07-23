@@ -21,11 +21,11 @@ public abstract class Persona implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private Long dni;
-	private String domicilio;
-	private String fechaDeNacimiento;
-	private String legajo;
-	private Long telefono;
-	private String email;
+	private Long dni=33954643l;
+	private String domicilio ="5 999";
+	private String fechaDeNacimiento="29/12/1988";
+	private String legajo="0/0001";
+	private Long telefono=2216234423l;
+	private String email="admin@hotmail.com";
 	private String password;
 }

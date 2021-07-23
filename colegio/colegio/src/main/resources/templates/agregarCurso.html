@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -28,22 +28,7 @@ s<!DOCTYPE html>
 							th:field="*{nombre}" class="form-control" id="nombre"
 							name="nombre" placeholder="Ingresar curso..">
 					</div>
-					<div class="col-md-4">
-						<label for="cursos" class="form-check-label">Materias que se dictan</label> 
-						<select th:field="*{materias}" class="form-select" multiple
-							aria-label="multiple select example">
-							<option th:each="m : ${materias}" selected th:text="${m.nombre}"
-								th:value="${m.id}">Seleccione la/las materias</option>
-						</select>
-					</div>
-					<div class="col-md-4">
-						<label for="cursos" class="form-check-label">Docentes</label> 
-						<select th:field="*{docentes}" class="form-select" multiple
-							aria-label="multiple select example">
-							<option th:each="d : ${docentes}" selected th:text="${d.nombre}"
-								th:value="${d.id}">Seleccione los docentes</option>
-						</select>
-					</div>
+					
 					<button type="submit" th:href="@{/administrador/cursos/crear}"
 						class="btn btn-outline-success">Crear Curso</button>
 				</form>

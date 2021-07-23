@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<title>Docente</title>
+</head>
+<body>
+	<header th:replace="/plantilla/template :: header"></header>
+	<div class="container align-center">
+		<div class="card">
+			<div class="card-header text-center">
+				<h1 th:text="*{tituloPrincipal}"></h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<form th:action="@{/materia/lista/guardar}"
+			th:object="${asistencia}">
+			<table class="table table-bordered table-light">
+				<thead>
+					<tr class="text-center">
+						<th scope="col">Nro de Alumno</th>
+						<th scope="col">Apellido y Nombre</th>
+						<th scope="col">Fecha &nbsp; <input  class="border-0 border-bottom-black"type="text"
+							th:field="*{fecha}" id="fecha"></th>
+						<th scope="col">Observaciones</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="a:${alumnos}">
+						<th scope="row" th:text="${a.id}"></th>
+						<td th:text="${a.nombre}"></td>
+						<td><div class="form-check form-switch text-center">
+								<input type="radio" class="btn-check" name="presente"
+									id="success-outlined" autocomplete="off" checked> <label
+									class="btn btn-outline-success" for="success-outlined" th:value="True">Presente</label>
+
+								<input type="radio" class="btn-check" name="ausente"
+									id="danger-outlined" autocomplete="off"> <label
+									class="btn btn-outline-danger" for="danger-outlined" th:value="False">Ausente</label></label>
+							</div></td>
+							<td><textarea rows="1" cols=""></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit" th:href="@{/materia/alumnos/crear}"
+						class="btn btn-outline-success">Guardar</button>
+		</form>
+	</div>
+
+	<div class="p-5">
+		<footer th:replace="/plantilla/template :: footer"></footer>
+	</div>
+</body>
+</html>

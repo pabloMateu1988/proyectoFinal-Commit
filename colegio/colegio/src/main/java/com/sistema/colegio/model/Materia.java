@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@DiscriminatorValue("Materia")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,16 +30,9 @@ public class Materia implements Serializable {
 	private Long id;
 	private String nombre;
 	
-	@ManyToMany(cascade = {
-			CascadeType.ALL
-    })
-    @JoinTable(
-            name = "materia_curso",
-            joinColumns = {@JoinColumn(name = "materia_id")},
-            inverseJoinColumns = {@JoinColumn(name = "curso_id")}
-    )
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<Curso> cursos = new ArrayList<Curso>();
-	@ManyToMany(cascade = CascadeType.ALL,mappedBy = "materias")
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "materias")
 	private List<Docente> docentes = new ArrayList<Docente>();
 
 }

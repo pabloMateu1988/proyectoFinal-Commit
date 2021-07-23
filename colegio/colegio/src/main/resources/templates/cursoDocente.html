@@ -30,7 +30,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="alumno:${curso.alumnos}">
+					<tr th:each="alumno:${alumnos}">
 						<th scope="row" th:text="${alumno.id}"></th>
 						<td th:text=${alumno.nombre}></td>
 					</tr>
@@ -49,8 +49,7 @@
 				<tbody>
 					<tr th:each="docMateria:${docente.materias}">
 						<th scope="row" th:text="${docMateria.id}"></th>
-						<td th:text=${docMateria.nombre}></td>
-						<td><a class="btn btn-outline-dark" href="@{/materia/{idCurso}/{idDocente}(idCurso = ${curso.id}, idDocente = ${docente.id})}" role="button">Ir</a></td>
+						<td><a class="btn btn-outline-dark"  th:href="@{/materia/{idMateria}/{idCurso}(idCurso = ${curso.id},idMateria=${docMateria.id})}" role="button" th:text=${docMateria.nombre}></a></td>
 					</tr>
 				</tbody>
 			</table>

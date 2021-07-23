@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sistema.colegio.model.Alumno;
+import com.sistema.colegio.model.Curso;
 
 @Service
 public interface AlumnoService {

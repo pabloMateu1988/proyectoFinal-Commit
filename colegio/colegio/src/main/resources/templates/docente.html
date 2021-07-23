@@ -24,12 +24,12 @@
 			<h3 th:text="*{tituloSecundario}"></h3>
 		</div>
 		<div class="row">
-			<div class="col-4 p-3" th:each="curso: ${docente.cursos}">
+			<div class="col-4 p-3" th:each="c: ${docente.cursos}">
 				<div class="p-3 border bg-light text-center"
 					>
 					<a class="btn btn-outline-dark" href="" role="button"
-						th:text="${curso.nombre}"
-						th:href="@{/cursoDocente/verCursos/{idCurso}/{idDocente}(idCurso = ${curso.id}, idDocente = ${docente.id})}"></a>
+						th:text=${c.nombre}
+						th:href="@{/cursoDocente/verCursos/{idDocente}/{idCurso}(idCurso = ${c.id}, idDocente = ${docente.id})}"></a>
 				</div>
 			</div>
 		</div>
