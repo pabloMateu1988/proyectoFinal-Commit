@@ -257,6 +257,8 @@ public class AdministradorController {
 	
 	@PostMapping("/completarAulaAlumnos/guardar")
 	public String completarAlumnos(@ModelAttribute Curso curso) {
+		curso.setId(curso.getId());
+		curso.setNombre(curso.getNombre());
 		cursoService.guardar(curso);
 		System.out.println(curso);
 		

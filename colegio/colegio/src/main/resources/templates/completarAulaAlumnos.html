@@ -26,7 +26,7 @@
 								th:value="${c.id}" th:name="idCurso">Seleccione el curso</option>
 						</select>
 						<label for="alumno" class="form-check-label">Alumnos</label> 
-						<select th:field="*{alumnos}" class="form-select" aria-label="multiple select example">
+						<select th:field="${alumnos}" class="form-select" aria-label="multiple select example">
 							<option th:each="c : ${alumnos}" selected th:text="${c.nombre}"
 								th:value="${c.id}" th:name="idAlumno">Seleccione los alumnos</option>
 						</select>						
