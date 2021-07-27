@@ -220,6 +220,7 @@ public class AdministradorController {
 		//...
 		materiaCursoService.guardar(materiaCurso);
 		curso.getMaterias().add(materiaCurso);
+		docente.getCursos().add(curso);
 
 		
 		System.out.println("Aula completa guardada");
