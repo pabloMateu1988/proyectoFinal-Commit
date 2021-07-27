@@ -30,36 +30,8 @@
 					</div>
 					
 					<button type="submit" th:href="@{/administrador/cursos/crear}"
-						class="btn btn-outline-success">Crear Curso</button>
+						class="btn btn-outline-success">Editar Curso</button>
 				</form>
-			</div>
-		</div>
-	</div>
-	<div class="container col-4">
-		<div class="row gx-5">
-			<div class="col">
-				<h3 class="text-center" th:text="${titulo}"></h3>
-				<div class="p-3 border bg-light text-center">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Cursos</th>
-								<th scope="col">Acción</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="c:${cursos}">
-								<th scope="row" th:text="${c.id}"></th>
-								<td th:text="${c.nombre}"></td>
-								<td><a class="btn btn-outline-warning"
-									th:href="@{/administrador/cursos/editarCurso/}+${c.id}" role="button">Editar</a> <a
-									class="btn btn-outline-danger"
-									th:href="@{/administrador/cursos/eliminar/}+${c.id}" role="button">Eliminar</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
 			</div>
 		</div>
 	</div>

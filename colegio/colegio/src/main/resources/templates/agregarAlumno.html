@@ -57,14 +57,6 @@
 							type="text" th:field="*{legajo}" class="form-control" id="legajo"
 							name="legajo">
 					</div>
-					<div class="col-md-4">
-						<label for="curso" class="form-check-label">Curso</label> 
-						<select th:field="*{cursos}" class="form-select" multiple
-							aria-label="multiple select example">
-							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
-								th:value="${c.id}">Seleccione los cursos</option>
-						</select>
-					</div>
 					<button type="submit" th:href="@{/administrador/alumnos/crear}"
 						class="btn btn-outline-success">Guardar</button>
 				</form>

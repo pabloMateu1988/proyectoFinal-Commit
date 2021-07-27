@@ -56,38 +56,8 @@
 							name="legajo">
 					</div>
 					<button type="submit" th:href="@{/administrador/docentes/crear}"
-						class="btn btn-outline-success">Guardar</button>
+						class="btn btn-outline-success">Editar Docente</button>
 				</form>
-			</div>
-		</div>
-	</div>
-	<div class="container col">
-		<div class="row gx-5">
-			<div class="col">
-				<h3 class="text-center" th:text="${tituloLista}"></h3>
-				<div
-					class="border bg-light ">
-					<table class="table table-bordered table-striped mb-0">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Docente</th>
-								<th scope="col">Acciones</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="d:${docentes}">
-								<th scope="row" th:text="${d.id}"></th>
-								<td th:text="${d.nombre}"></td>
-								<td><a class="btn btn-outline-warning"
-									th:href="@{/administrador/docentes/editarDocente/}+${d.id}" role="button">Editar</a>
-									<a class="btn btn-outline-danger"
-									th:href="@{/administrador/docentes/eliminar/}+${d.id}" role="button">Eliminar</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sistema.colegio.repository.DocenteRepository;
 import com.sistema.colegio.service.CursoService;
 import com.sistema.colegio.service.DocenteService;
+import com.sistema.colegio.service.MateriaCursoService;
 
 @Controller
 @RequestMapping("/docente")
@@ -20,13 +21,13 @@ public class DocenteController {
 	@Autowired
 	DocenteService docenteService;
 	@Autowired
-	DocenteRepository docenteRepository;
+	MateriaCursoService materiaCursoService;
 	
 	@GetMapping("/{id}")
 	public String listar(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("titulo", "Bienvenido");
 		model.addAttribute("tituloSecundario", "Cursos a cargo");
-		model.addAttribute("docente", docenteService.buscarPorId(id));
+		model.addAttribute("docente", materiaCursoService.buscarDocentePorId(id));
 		return "docente";
 	}
 	

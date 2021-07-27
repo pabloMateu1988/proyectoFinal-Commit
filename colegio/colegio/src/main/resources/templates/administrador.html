@@ -13,29 +13,41 @@
 	<header th:replace="/plantilla/template :: header"></header>
 
 	<div class="container overflow-hidden p-3">
-		<div class="row gx-5">
-			<div class="col">
+		<div class="row gx-5 ">
+			<div class="col-3 p-3">
 				<div class="p-3 border bg-light text-center">
 					<a class="btn btn-outline-dark" th:href="@{/administrador/docentes/crear}"
 						role="button">Agregar Docente</a>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-3 p-3">
 				<div class="p-3 border bg-light text-center">
 					<a class="btn btn-outline-dark" th:href="@{/administrador/alumnos/crear}"
 						role="button">Agregar Alumno</a>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-3 p-3">
 				<div class="p-3 border bg-light text-center">
 					<a class="btn btn-outline-dark" th:href="@{/administrador/cursos/crear}"
 						role="button">Agregar Curso</a>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-3 p-3">
 				<div class="p-3 border bg-light text-center">
 					<a class="btn btn-outline-dark" th:href="@{/administrador/materias/crear}"
 						role="button">Agregar Materia</a>
+				</div>
+			</div>
+			<div class="col p-3">
+				<div class="p-3 border bg-light text-center">
+					<a class="btn btn-outline-dark" th:href="@{/administrador/completaraula/crear}"
+						role="button">Crear Aula Completa</a>
+				</div>
+			</div>
+			<div class="col p-3">
+				<div class="p-3 border bg-light text-center">
+					<a class="btn btn-outline-dark" th:href="@{/administrador/completarAulaAlumnos/crear}"
+						role="button">Cargar Alumnos en Aula</a>
 				</div>
 			</div>
 		</div>

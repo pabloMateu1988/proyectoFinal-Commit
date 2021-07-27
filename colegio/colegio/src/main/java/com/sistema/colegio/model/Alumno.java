@@ -9,6 +9,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,5 @@ import lombok.Setter;
 public class Alumno extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
-	private List<Curso> cursos = new ArrayList<Curso>();
+
 }

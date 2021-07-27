@@ -33,7 +33,12 @@ public class Curso implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private int anioCalendario=2021;
+	private Integer anioCalendario=2021;
+	
+	@OneToMany
+	List<MateriaCurso> materias;
+	@OneToMany
+	List<Alumno> alumnos;
 	
 	
 
