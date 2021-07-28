@@ -1,6 +1,7 @@
 package com.sistema.colegio.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class MateriaCurso implements Serializable{
 	private Long id;
 	@OneToOne
 	private Curso curso;
-	@OneToOne
+	@OneToOne 
 	private Materia materia;
 	@OneToOne
 	private Docente docente;

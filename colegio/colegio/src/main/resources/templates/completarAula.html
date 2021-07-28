@@ -25,12 +25,12 @@
 							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
 								th:value="${c.id}">Seleccione el curso</option>
 						</select>
-						<label for="curso" class="form-check-label">Materia</label> 
+						<label for="materia" class="form-check-label">Materia</label> 
 						<select th:field="*{materia}" class="form-select" aria-label="multiple select example">
 							<option th:each="c : ${materias}" selected th:text="${c.nombre}"
 								th:value="${c.id}">Seleccione la materia</option>
 						</select>
-						<label for="curso" class="form-check-label">Docente</label> 
+						<label for="docente" class="form-check-label">Docente</label> 
 						<select th:field="*{docente}" class="form-select" aria-label="multiple select example">
 							<option th:each="c : ${docentes}" selected th:text="${c.nombre}"
 								th:value="${c.id}">Seleccione el docente</option>

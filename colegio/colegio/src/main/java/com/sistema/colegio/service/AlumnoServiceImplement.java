@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sistema.colegio.model.Alumno;
-import com.sistema.colegio.model.Curso;
 import com.sistema.colegio.repository.AlumnoRepository;
 import com.sistema.colegio.repository.CursoRepository;
 

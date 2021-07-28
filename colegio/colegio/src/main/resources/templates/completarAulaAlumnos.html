@@ -17,23 +17,54 @@
 				<h1 th:text="*{tituloPrincipal}"></h1>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/administrador/completarAulaAlumnos/guardar}" th:object="${curso}"
+				<form th:action="@{/administrador/completarAulaAlumnos/guardar}" th:object="${cursoAlumno}"
 					method="post" class="row g-3">
 					<div class="col-md-4">
 						<label for="curso" class="form-check-label">Curso</label> 
-						<select th:field="${curso}" class="form-select" aria-label="multiple select example">
+						<select th:field="*{curso}" class="form-select" aria-label="multiple select example" >
 							<option th:each="c : ${cursos}" selected th:text="${c.nombre}"
-								th:value="${c.id}" th:name="idCurso">Seleccione el curso</option>
+								th:value="${c.id}">Seleccione el curso</option>
 						</select>
-						<label for="alumno" class="form-check-label">Alumnos</label> 
-						<select th:field="${alumnos}" class="form-select" aria-label="multiple select example">
+						<label for="alumno" class="form-check-label">Alumno</label> 
+						<select th:field="*{alumno}" class="form-select" aria-label="multiple select example">
 							<option th:each="c : ${alumnos}" selected th:text="${c.nombre}"
-								th:value="${c.id}" th:name="idAlumno">Seleccione los alumnos</option>
-						</select>						
+								th:value="${c.id}">Seleccione el Alumno</option>
+						</select>					
 					</div>
 					<button type="submit" th:href="@{/administrador/completaraulaAlumnos/crear}"
 						class="btn btn-outline-success">Guardar Alumnos</button>
 				</form>
+			</div>
+		</div>
+	</div>
+	<div class="container col">
+		<div class="row gx-5">
+			<div class="col">
+				<h3 class="text-center" th:text="${tituloLista}"></h3>
+				<div
+					class="border bg-light">
+					<table class="table table-bordered table-striped mb-0">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Aula</th>
+								<th scope="col">Alumno</th>
+								<th scope="col">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="m:${cursoAlumnos}" >
+								<th scope="row" th:text="${m.id}"></th>
+								<td th:text="${m.curso.nombre}"></td>
+								<td th:text="${m.alumno.nombre}"></td>
+								<td><a class="btn btn-outline-warning"
+									th:href="@{/administrador/completarAulaAlumnos/editarAulaAlumnos/}+${m.id}" role="button">Editar</a>
+									<a class="btn btn-outline-danger"
+									th:href="@{/administrador/completarAulaAlumnos/eliminarAulaAlumnos/}+${m.id}" role="button">Eliminar</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

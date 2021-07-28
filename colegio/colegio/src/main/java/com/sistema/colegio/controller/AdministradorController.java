@@ -1,25 +1,23 @@
 package com.sistema.colegio.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sistema.colegio.model.Alumno;
 import com.sistema.colegio.model.Curso;
+import com.sistema.colegio.model.CursoAlumno;
 import com.sistema.colegio.model.Docente;
 import com.sistema.colegio.model.Materia;
 import com.sistema.colegio.model.MateriaCurso;
 import com.sistema.colegio.service.AlumnoService;
+import com.sistema.colegio.service.CursoAlumnoService;
 import com.sistema.colegio.service.CursoService;
 import com.sistema.colegio.service.DocenteService;
 import com.sistema.colegio.service.MateriaCursoService;
@@ -38,6 +36,8 @@ public class AdministradorController {
 	private MateriaService materiaService;
 	@Autowired
 	private MateriaCursoService materiaCursoService;
+	@Autowired
+	private CursoAlumnoService cursoAlumnoService;
 	
 	@GetMapping("/listar")
 	public String listarCursos(Model model) {
@@ -218,9 +218,12 @@ public class AdministradorController {
 		materiaCurso.setDocente(docente);
 		materiaCurso.setMateria(materia);
 		//...
+//		docente.getCursos().add(curso);
+		docenteService.guardar(docente);
 		materiaCursoService.guardar(materiaCurso);
-		curso.getMaterias().add(materiaCurso);
-		docente.getCursos().add(curso);
+//		curso.getMateriasDocentes().add(materiaCurso);
+		cursoService.guardar(curso);
+		
 
 		
 		System.out.println("Aula completa guardada");
@@ -247,23 +250,41 @@ public class AdministradorController {
 	
 	@GetMapping("/completarAulaAlumnos/crear")
 	public String completarAulaAlumnos(Model model) {
-		model.addAttribute("curso", new Curso());
-		model.addAttribute("materias", materiaService.listarMaterias());
+		model.addAttribute("cursoAlumno", new CursoAlumno());
 		model.addAttribute("cursos", cursoService.listarCursos());
 		model.addAttribute("alumnos",alumnoService.listarAlumnos());
-		model.addAttribute("materiaCurso", materiaCursoService.listarMateriasCurso());
+		model.addAttribute("cursoAlumnos",cursoAlumnoService.listarCursoAlumno());
 		return "completarAulaAlumnos";
 	}
 
 	
 	@PostMapping("/completarAulaAlumnos/guardar")
-	public String completarAlumnos(@ModelAttribute Curso curso) {
-		curso.setId(curso.getId());
-		curso.setNombre(curso.getNombre());
-		cursoService.guardar(curso);
-		System.out.println(curso);
-		
+	public String completarAulaAlumnos(@ModelAttribute ("cursoAlumno") CursoAlumno cursoAlumno) {
+		Curso curso = cursoService.buscarCursoPorId(cursoAlumno.getCurso().getId());
+		Alumno alumno = alumnoService.buscarAlumnoPorId(cursoAlumno.getAlumno().getId());
+		cursoAlumno.setCurso(curso);
+		cursoAlumno.setAlumno(alumno);
+		cursoAlumnoService.guardar(cursoAlumno);
+//		curso.getAlumnos().add(cursoAlumno);
+//		cursoService.guardar(curso);
 		System.out.println("Aula completa con Alumnos");
+		return "redirect:/administrador/completarAulaAlumnos/crear";
+	}
+	
+	@GetMapping("/completarAulaAlumnos/editarAulaAlumnos/{id}")
+	public String editarAulaAlumnos(Model model, @PathVariable Long id) {
+		CursoAlumno cursoAlumno = (CursoAlumno) cursoAlumnoService.buscarPorId(id);
+		model.addAttribute("titulo", "Editar");
+		model.addAttribute("cursoAlumno", cursoAlumno);
+		model.addAttribute("cursos", cursoService.listarCursos());
+		model.addAttribute("alumnos", alumnoService.listarAlumnos());
+		System.out.println("Editado con exito");
+		return "editarAulaAlumnos";
+	}
+	
+	@GetMapping("/completarAulaAlumnos/eliminarAulaAlumnos/{id}")
+	public String eliminarAulaAlumnos(Model model, @PathVariable Long id) {
+		cursoAlumnoService.eliminar(id);
 		return "redirect:/administrador/completarAulaAlumnos/crear";
 	}
 	

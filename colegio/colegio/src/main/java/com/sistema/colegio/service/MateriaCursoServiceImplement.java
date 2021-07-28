@@ -28,7 +28,7 @@ public class MateriaCursoServiceImplement implements MateriaCursoService {
 
 	@Override
 	public void guardar(MateriaCurso materiaCurso) {
-		materiaCursoRepository.save(materiaCurso);
+		materiaCursoRepository.saveAndFlush(materiaCurso);
 
 	}
 
