@@ -36,7 +36,6 @@ public class AsistenciaController {
 	@Autowired
 	CursoAlumnoRepository cursoAlumnoRepository;
 	
-	@SuppressWarnings("unchecked")//Controlar esto
 	@GetMapping("/{cursoId}/{materiaId}")
 	public String controlarAsistencia(Model model,@PathVariable("cursoId") Long cursoId, @PathVariable("materiaId") Long materiaId) {
 		
