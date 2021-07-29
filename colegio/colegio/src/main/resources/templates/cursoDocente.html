@@ -29,12 +29,12 @@
 						<th scope="col">Apellido y Nombre</th>
 					</tr>
 				</thead>
-<!-- 				<tbody> -->
-<!-- 					<tr th:each="alumno:${alumnos}"> -->
-<!-- 						<th scope="row" th:text="${alumno.id}"></th> -->
-<!-- 						<td th:text=${alumno.nombre}></td> -->
-<!-- 					</tr> -->
-<!-- 				</tbody> -->
+				<tbody>
+					<tr th:each="al:${cursoAlumno}">
+						<th scope="row" th:text="${al.alumno.id}"></th>
+						<td th:text=${al.alumno.nombre}></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		<div class="container col-4">
@@ -47,10 +47,10 @@
 					</tr>
 				</thead>
 				<tbody>
-<!-- 					<tr th:each="docMateria:${docente.materias}"> -->
-<!-- 						<th scope="row" th:text="${docMateria.id}"></th> -->
-<!-- 						<td><a class="btn btn-outline-dark"  th:href="@{/materia/{idMateria}/{idCurso}(idCurso = ${curso.id},idMateria=${docMateria.id})}" role="button" th:text=${docMateria.nombre}></a></td> -->
-<!-- 					</tr> -->
+					<tr th:each="docMateria:${docenteMateria}">
+						<th scope="row" th:text="${docMateria.materia.id}"></th>
+						<td><a class="btn btn-outline-dark"  th:href="@{/materia/{idMateria}/{idCurso}(idMateria=${docMateria.materia.id},idCurso = ${docMateria.curso.id})}" role="button" th:text=${docMateria.materia.nombre}></a></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

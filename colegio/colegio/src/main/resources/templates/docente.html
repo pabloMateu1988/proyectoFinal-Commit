@@ -29,7 +29,7 @@
 					>
 					<a class="btn btn-outline-dark" href="" role="button"
 						th:text=*{c.curso.nombre}
-						th:href="@{/cursoDocente/verCursos/{idDocente}/{idCurso}(idCurso = ${c.id}, idDocente = ${docente.id})}"></a>
+						th:href="@{/cursoDocente/verCursos/{idDocente}/{idCurso}(idDocente = ${docente.id}, idCurso = ${c.curso.id})}"></a>
 				</div>
 			</div>
 		</div>
