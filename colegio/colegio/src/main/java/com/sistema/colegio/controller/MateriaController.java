@@ -42,18 +42,18 @@ public class MateriaController {
 	}
 
 	
-	@GetMapping("/lista/crear/{idMateria}/{idCurso}")
-	public String crearAsistencia(Model model, @PathVariable("idMateria") Long idMateria, @PathVariable("idCurso") Long idCurso) {
-		model.addAttribute("asistencia", new Asistencia());
-		model.addAttribute("tituloPrincipal", "Registro de Asistencia");
-		model.addAttribute("materia", materiaService.buscarPorId(idMateria));
-		model.addAttribute("curso", cursoService.buscarCursoPorId(idCurso));
-		model.addAttribute("alumnos", alumnoService.listarAlumnos());
-		
-		return "asistencia";
-		
-		
-	}
+//	@GetMapping("/lista/crear/{idMateria}/{idCurso}")
+//	public String crearAsistencia(Model model, @PathVariable("idMateria") Long idMateria, @PathVariable("idCurso") Long idCurso) {
+//		model.addAttribute("asistencia", new Asistencia());
+//		model.addAttribute("tituloPrincipal", "Registro de Asistencia");
+//		model.addAttribute("materia", materiaService.buscarPorId(idMateria));
+//		model.addAttribute("curso", cursoService.buscarCursoPorId(idCurso));
+//		model.addAttribute("alumnos", alumnoService.listarAlumnos());
+//		
+//		return "asistencia";
+//		
+//		
+//	}
 	
 	@PostMapping("/lista/guardar")
 	public String guardarAsistencia(@ModelAttribute Asistencia asistencia) {

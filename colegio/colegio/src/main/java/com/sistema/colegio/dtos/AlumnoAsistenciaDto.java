@@ -14,6 +14,7 @@ public class AlumnoAsistenciaDto {
 	public AlumnoAsistenciaDto(Long alumnoId, String alumnoNombre) {
 		this.alumnoId = alumnoId;
 		this.alumnoNombre = alumnoNombre;
+		
 	}
 	
 	public AlumnoAsistenciaDto() {
