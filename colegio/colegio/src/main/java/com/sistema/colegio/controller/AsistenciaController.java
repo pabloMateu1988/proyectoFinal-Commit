@@ -1,7 +1,5 @@
 package com.sistema.colegio.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.colegio.dtos.AlumnoAsistenciaDto;
-import com.sistema.colegio.dtos.CursoDto;
-import com.sistema.colegio.dtos.MateriaDto;
 import com.sistema.colegio.dtos.PasarLista;
 import com.sistema.colegio.model.Alumno;
 import com.sistema.colegio.model.Asistencia;
@@ -47,7 +43,7 @@ public class AsistenciaController {
 	@GetMapping("/pasarLista/{cursoId}/{materiaId}")
 	public String controlarAsistencia(Model model,@PathVariable("cursoId") Long cursoId, @PathVariable("materiaId") Long materiaId) {
 		
-		CursoAlumno curso = cursoAlumnoService.buscarPorId(cursoId);
+		Curso curso = cursoService.buscarCursoPorId(cursoId);
 		Materia materia = materiaService.buscarPorId(materiaId);
 		List<CursoAlumno> alumno = cursoAlumnoRepository.buscarCursoAlumno(cursoId);
 		model.addAttribute("curso", curso);
@@ -64,8 +60,9 @@ public class AsistenciaController {
 //		
 //		
 		alumno.stream().map(a -> new AlumnoAsistenciaDto(a.getId(), a.getAlumno().getNombre())).collect(Collectors.toList());
-//		
-		PasarLista pasarLista = new PasarLista(new Date(), materia, curso, alumno);
+		String fecha = "";	
+		String observaciones ="";
+		PasarLista pasarLista = new PasarLista(fecha, materia, curso, alumno, observaciones );
 //		
 		model.addAttribute("pasarLista", pasarLista);
 		
@@ -73,16 +70,17 @@ public class AsistenciaController {
 		return "asistencia";
 	}
 	@PostMapping("/guardar")
-	public String guardarControlAsistencia(@ModelAttribute PasarLista pasarLista) {
+	public String guardarControlAsistencia(Model model,@ModelAttribute PasarLista pasarLista) {
 		Asistencia asistencia = new Asistencia();
-		asistencia.setCurso(pasarLista.getCurso().getCurso());
+		asistencia.setCurso(pasarLista.getCurso());
 		asistencia.setFecha(pasarLista.getFecha());
 		asistencia.setAlumno((Alumno) pasarLista.getAlumnos());
 		asistencia.setAsistio(pasarLista.getAsistio());
 		asistencia.setMateria(pasarLista.getMateria());
+		asistencia.setObservaciones(pasarLista.getObservaciones());
 		
 		asistenciaService.guardarAsistencia(asistencia);
-		return "redirect:/cursoDocente/";
+		return "redirect:/administrador/listar";
 		
 	}
 

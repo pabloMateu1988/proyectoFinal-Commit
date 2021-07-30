@@ -26,6 +26,7 @@ public class Curso implements Serializable {
 	private String nombre;
 	private Integer anioCalendario=2021;
 	
+	
 //	@OneToMany
 //	List<MateriaCurso> materiasDocentes;
 

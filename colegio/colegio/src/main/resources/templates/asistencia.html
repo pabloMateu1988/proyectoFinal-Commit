@@ -15,15 +15,15 @@
 		<div class="card">
 			<div class="card-header text-center">
 				<h1 th:text="*{tituloPrincipal}"></h1>
-				<h3 th:text="*{curso.curso.nombre}"></h3>
-				<input type="hidden" th:field="*{curso.curso.id}" id="idCurso">
+				<h3 th:text="*{curso.nombre}"></h3>
 				<h3 th:text="*{materia.nombre}"></h3>
-				<input type="hidden" th:field="*{materia.id}" id="idMateria">
 			</div>
 			<div class="card-body">
 			<form th:action="@{/asistencia/guardar}" th:object="${pasarLista}" method="post">
+			<input type="hidden" th:field="*{curso.id}" id="idCurso"></input>
+			<input type="hidden" th:field="*{materia.id}" id="idMateria"></input>
 			<label>Fecha:</label>
-			<input type="date">
+			<input type="text" th:field="*{fecha}">
 				<table class="table">
 					<thead>
 						<tr>
@@ -43,13 +43,14 @@
 										<input class="form-check-input" type="checkbox" th:value="true"
 											id="presente" checked>
 									</div></td>
-								<td><textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea></td>
+								<td><textarea class="form-control" th:field="*{observaciones}" id="exampleFormControlTextarea1" rows="1"></textarea></td>
 							</tr>
 							
 						
 					</tbody>
 				</table>
-				<button type="submit" th:href="@{/docente}"
+				
+				<button type="submit" th:href="@{/administrador/listar}"
 							class="btn btn-outline-success">Guardar Asistencia</button>
 				</form>
 			</div>

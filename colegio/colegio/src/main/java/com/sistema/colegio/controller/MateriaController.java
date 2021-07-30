@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.colegio.model.Asistencia;
-import com.sistema.colegio.model.Materia;
-import com.sistema.colegio.repository.CursoRepository;
-import com.sistema.colegio.repository.MateriaRepository;
 import com.sistema.colegio.service.AlumnoService;
 import com.sistema.colegio.service.AsistenciaService;
 import com.sistema.colegio.service.CursoService;
@@ -32,8 +29,8 @@ public class MateriaController {
 	private AlumnoService alumnoService;
 	
 	
-	@GetMapping("/{idMateria}/{idCurso}")
-	public String materia(Model model, @PathVariable("idMateria") Long idMateria, @PathVariable("idCurso") Long idCurso) {
+	@GetMapping("/{idCurso}/{idMateria}")
+	public String materia(Model model,@PathVariable("idCurso") Long idCurso,@PathVariable("idMateria") Long idMateria) {
 		model.addAttribute("materia", materiaService.buscarPorId(idMateria));
 		model.addAttribute("curso", cursoService.buscarCursoPorId(idCurso));
 		return "materiaDocente";

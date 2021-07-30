@@ -49,7 +49,7 @@
 				<tbody>
 					<tr th:each="docMateria:${docenteMateria}">
 						<th scope="row" th:text="${docMateria.materia.id}"></th>
-						<td><a class="btn btn-outline-dark"  th:href="@{/asistencia/pasarLista/{idCurso}/{idMateria}(idCurso = ${docMateria.curso.id},idMateria=${docMateria.materia.id})}" role="button" th:text=${docMateria.materia.nombre}></a></td>
+						<td><a class="btn btn-outline-dark"  th:href="@{/materia/{idCurso}/{idMateria}(idCurso = ${docMateria.curso.id},idMateria=${docMateria.materia.id})}" role="button" th:text=${docMateria.materia.nombre}></a></td>
 					</tr>
 				</tbody>
 			</table>

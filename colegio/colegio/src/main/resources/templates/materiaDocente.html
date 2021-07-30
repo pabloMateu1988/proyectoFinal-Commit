@@ -11,10 +11,15 @@
 </head>
 <body>
 	<header th:replace="/plantilla/template :: header"></header>
-	<div class="container">
-		<a class="btn btn-outline-dark"  th:href="@{/materia/lista/crear/{idMateria}/{idCurso}(idCurso = ${curso.id},idMateria=${materia.id})}" role="button">Lista de Alumno</a>
+	<div class="container overflow-hidden p-3">
+		<div class="row gx-5 ">
+			<div class="col-3 p-3">
+				<div class="p-3 border bg-light text-center">
+					<a class="btn btn-outline-dark"  th:href="@{/asistencia/pasarLista/{idCurso}/{idMateria}/(idCurso = ${curso.id},idMateria=${materia.id})}" role="button">Asistencia</a>
+				</div>
+			</div>
+		</div>
 	</div>
-
 	<div class="p-5">
 		<footer th:replace="/plantilla/template :: footer"></footer>
 	</div>
